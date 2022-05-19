@@ -1,1 +1,6 @@
-<p>User works!</p>
+<ul *ngIf="user$ | async else noData">
+    <li *ngFor="let user of user$">
+        {{user$ | json}}
+    </li> 
+</ul>
+<ng-template #noData>No Data Available</ng-template>
