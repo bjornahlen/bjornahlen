@@ -18,7 +18,7 @@ export class UserComponent implements OnInit {
   constructor(private userAdminservice: UseradminService) { }
 
   user$: Observable<User[]> = this.userAdminservice.getUsers();
-  displayedColumns = ['First Name', 'Last Name'];
+  displayedColumns = ['firstName', 'lastName','dateOfBirth'];
 
 
   ngOnInit(): void {

@@ -10,7 +10,7 @@ import { catchError} from 'rxjs/operators';
 
 export class UseradminService {
 
-  private userUrl = 'https://young-savannah-65688.herokuapp.com/users/';
+  private userUrl = 'https://afcrud.herokuapp.com/users/';
 
   constructor(private http: HttpClient) { }
 
