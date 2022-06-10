@@ -1,6 +1,19 @@
-<ul *ngIf="user$ | async else noData">
-    <li *ngFor="let user of user$">
-        {{user$ | json}}
-    </li> 
-</ul>
+<div *ngIf="user$ | async as users; else noData">
+    <mat-table [dataSource]="users">
+
+        <ng-container matColumnDef="firstName">
+            <mat-header-cell *matHeaderCellDef> First Name </mat-header-cell>
+            <mat-cell *matCellDef="let user"> {{user.firstName}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="firstName">
+            <mat-header-cell *matHeaderCellDef> Last Name </mat-header-cell>
+            <mat-cell *matCellDef="let user"> {{user.lastName}} </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+    </mat-table>
+</div>
 <ng-template #noData>No Data Available</ng-template>
