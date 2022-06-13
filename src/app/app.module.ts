@@ -12,14 +12,18 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AboutComponent } from './about/about.component';
 import { UserComponent } from './user/user.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { UserformComponent } from './userform/userform.component';
+import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule, MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
     AppComponent,
     AboutComponent,
-    UserComponent
+    UserComponent,
+    UserformComponent
   ],
   imports: [
     BrowserModule,
@@ -32,10 +36,17 @@ import { HttpClientModule } from '@angular/common/http';
     MatTableModule,
     MatDividerModule,
     MatListModule,
+    MatCardModule,
+    MatFormFieldModule,
     FormsModule,
     HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    
   ],
-  providers: [],
+  providers: [
+    {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'fill'}}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

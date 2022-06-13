@@ -1,0 +1,28 @@
+
+    <mat-card>
+        <mat-card-title>Create new user</mat-card-title>
+        <mat-card-subtitle>Please fill in required information</mat-card-subtitle>
+        
+    <form [formGroup]="userForm">
+<mat-form-field appearance="fill">
+    <mat-label>First name</mat-label>
+<input mat-input placeholder="First name">
+</mat-form-field>
+
+<mat-form-field appearance="fill">
+    <mat-label>Last name</mat-label>
+    <input mat-input placeholder="Last name">
+    </mat-form-field>
+ 
+    <mat-form-field appearance="fill">
+        <mat-label>Date of bith</mat-label>
+        <input mat-input placeholder="Date of birth">
+        </mat-form-field>
+
+
+    </form>
+    <Button mat-button>Submit</Button>
+    <Button mat-button>Cancel</Button>
+</mat-card>
+
+
