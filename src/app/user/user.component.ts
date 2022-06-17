@@ -18,12 +18,15 @@ export class UserComponent implements OnInit {
   constructor(private userAdminservice: UseradminService) { }
 
   user$: Observable<User[]> = this.userAdminservice.getUsers();
-  displayedColumns = ['firstName', 'lastName','dateOfBirth', 'gender','isMarried'];
+  displayedColumns = ['firstName', 'lastName', 'dateOfBirth', 'gender', 'isMarried', 'role', 'actions'];
 
 
   ngOnInit(): void {
   }
 
+  deleteUser(id: string) {
+    this.userAdminservice.deleteUser(id).subscribe();
+  }
 }
 
 
