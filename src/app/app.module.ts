@@ -17,6 +17,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { UserformComponent } from './userform/userform.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule, MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
+import { MatRadioModule } from '@angular/material/radio';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,8 @@ import { MatFormFieldModule, MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/mat
     MatListModule,
     MatCardModule,
     MatFormFieldModule,
+    MatButtonModule,
+    MatRadioModule,
     FormsModule,
     HttpClientModule,
     FormsModule,

@@ -17,6 +17,11 @@ export class UseradminService {
   getUsers() {
   return this.http.get<User[]>(this.userUrl);
 }
+
+createUser(user: User): Observable<User> {
+  return this.http.post<User>(this.userUrl, user)
+}
+
 }
 
 
