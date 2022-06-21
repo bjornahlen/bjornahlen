@@ -4,19 +4,23 @@
 
     <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
         <p>First name: <input type="text" formControlName="firstName"></p>
+        <div *ngIf="userForm.get('firstName')?.hasError('required')">Error firstname</div>
+
         <p>Last name: <input type="text" formControlName="lastName"></p>
         <p>Date of birth: <input type="date" formControlName="dateOfBirth"></p>
         <p>User is married:<input type="checkbox" formControlName="isMarried"></p> 
         <p></p>
         <p><label>Gender:</label></p>
         <mat-radio-group formControlName="gender">
+            <mat-radio-button value="0">Male</mat-radio-button>
+            <p></p>
             <mat-radio-button value="1">Female</mat-radio-button>
             <p></p>
             <mat-radio-button value="2"> Other</mat-radio-button>
         </mat-radio-group>
         <p></p>
         <label>Option</label>
-        <mat-radio-group formControlName="role">
+        <mat-radio-group formControlName="role"><p></p>
             <p>
                 <mat-radio-button value="0">User</mat-radio-button>
             </p>
@@ -26,8 +30,9 @@
         </mat-radio-group>
         <p></p>
 
-        <Button mat-button type="submit">Submit</Button>
+        <Button mat-button [disabled]="!userForm.valid" type="submit">Submit</Button>
         <Button mat-button>Cancel</Button>
+        <p>{{ response }} </p>
     </form>
 
 

@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { Subject, Observable, takeUntil } from 'rxjs';
 import { User } from '../user';
-import { MatTableDataSource } from '@angular/material/table';
-import { getMultipleValuesInSingleSelectionError } from '@angular/cdk/collections';
 import { UseradminService } from '../useradmin.service';
 
 @Component({
@@ -16,17 +14,26 @@ import { UseradminService } from '../useradmin.service';
 export class UserComponent implements OnInit {
 
   constructor(private userAdminservice: UseradminService) { }
-
+  destroy$: Subject<boolean> = new Subject<boolean>()
   user$: Observable<User[]> = this.userAdminservice.getUsers();
+ 
   displayedColumns = ['firstName', 'lastName', 'dateOfBirth', 'gender', 'isMarried', 'role', 'actions'];
 
 
   ngOnInit(): void {
   }
 
-  deleteUser(id: string) {
-    this.userAdminservice.deleteUser(id).subscribe();
+  ngOnDestroy() {
+    this.destroy$.next(true);
+    this.destroy$.unsubscribe();
   }
+
+  deleteUser(id: string) {
+    -    this.userAdminservice.deleteUser(id).subscribe();
+       }
+
+
+
 }
 
 
