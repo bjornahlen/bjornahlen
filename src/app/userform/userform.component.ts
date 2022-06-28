@@ -3,6 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { UseradminService } from '../useradmin.service';
 import { Router } from '@angular/router';
 import { FormArray } from '@angular/forms';
+import { WorkexperiencesComponent } from '../workexperiences/workexperiences.component';
 
 
 
@@ -31,23 +32,25 @@ export class UserformComponent implements OnInit {
     isMarried: ['true', Validators.required],
     role: ['', Validators.required],
     education: this.fb.array([]),
-    workExperience: this.fb.array([]),
+    workExperiences: this.fb.array([]),
   })
 
   createWorkExperience() {
     return this.fb.group({
-                  employer: ['', Validators.required],
+      employer: ['', Validators.required],
       title: ['', Validators.required],
       startDate: ['', Validators.required],
       endDate: ['', Validators.required],
     })
   }
 
+  addWorkExperience() {
+    
+  }
+
+
+
   /*
-    get workexperiences() : {
-      return this.experienceForm.Controls[workExperience] as FormArray;
-    }
-  
   addWorkexperience() {
   this.workExperience.push(experienceForm);
   

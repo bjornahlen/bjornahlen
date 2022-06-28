@@ -18,13 +18,15 @@ import { UserformComponent } from './userform/userform.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule, MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { MatRadioModule } from '@angular/material/radio';
+import { WorkexperiencesComponent } from './workexperiences/workexperiences.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AboutComponent,
     UserComponent,
-    UserformComponent
+    UserformComponent,
+    WorkexperiencesComponent
   ],
   imports: [
     BrowserModule,

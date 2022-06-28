@@ -37,9 +37,16 @@
                 <mat-radio-button value="1">Admin</mat-radio-button>
             </p>
         </mat-radio-group>
+        <mat-card>
+<mat-card-title="Work experiences"></mat-card-title>
+
+        </mat-card>
         <Button mat-button>Add work experience</Button>
         <p></p>
 <div>
+    <app-workexperiences>[workExperiences]=workexperiences</app-workexperiences>
+</div>
+        <div>
     <label>Add a work experience</label>
     <p>Employer: <input type="text" formControlName="employer"></p>
     <p>Title: <input type="text" formControlName="title"></p>
