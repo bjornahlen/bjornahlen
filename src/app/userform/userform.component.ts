@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { UseradminService } from '../useradmin.service';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { FormArray } from '@angular/forms';
 
 
 
@@ -18,6 +18,7 @@ export class UserformComponent implements OnInit {
   workexperienceactive: boolean = false;
   educationactive: boolean = false;
   response: string = '';
+  submitted = false;
 
   constructor(private fb: FormBuilder, private userAdminservice: UseradminService, private router: Router) { }
 
@@ -31,32 +32,58 @@ export class UserformComponent implements OnInit {
     role: ['', Validators.required],
     education: this.fb.array([]),
     workExperience: this.fb.array([]),
-
   })
 
-  ngOnInit(): void {
+  createWorkExperience() {
+    return this.fb.group({
+                  employer: ['', Validators.required],
+      title: ['', Validators.required],
+      startDate: ['', Validators.required],
+      endDate: ['', Validators.required],
+    })
   }
 
-
+  /*
+    get workexperiences() : {
+      return this.experienceForm.Controls[workExperience] as FormArray;
+    }
+  
+  addWorkexperience() {
+  this.workExperience.push(experienceForm);
+  
+  }
+  */
+  ngOnInit(): void {
+    console.log(this.submitted);
+  }
 
   onSubmit() {
 
-    this.userAdminservice.createUser(this.userForm.value).subscribe({ 
+    this.userAdminservice.createUser(this.userForm.value).subscribe({
       next: (value) => {
-      this.response = "User was saved";
-    }, error: (err) => {
-      this.response = err;
-    },});
+        this.response = "User was saved";
+      }, error: (err) => {
+        this.response = err;
+      },
+    });
 
     console.log(this.userForm.value);
-    
+
+    this.submitted = true;
 
   }
 
   public handleError = (controlName: string, errorName: string) => {
-  return this.userForm.controls[controlName].hasError(errorName);
-};
+    return this.userForm.controls[controlName].hasError(errorName);
+  };
+
+  public reload() {
+    this.userForm.reset();
+  }
+
+
+
+
 
 
 }
-

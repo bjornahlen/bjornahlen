@@ -2,6 +2,15 @@
     <mat-card-title>Create new user</mat-card-title>
     <mat-card-subtitle>Please fill in required information</mat-card-subtitle>
 
+<div [hidden]=!submitted>
+    <p>Your user was sucessfully saved. What do you want to do?</p>
+    <mat-card-actions>
+        <button mat-button [routerLink]="'/userform'">CREATE ANOTHER USER</button>
+        <button mat-button [routerLink]="'/user'">VEW EXISTING USERS</button>
+    </mat-card-actions>
+</div>
+
+<div [hidden]=submitted>
     <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
         <p>First name: <input type="text" formControlName="firstName"></p>
         <div *ngIf="userForm.get('firstName')?.hasError('required')">Error firstname</div>
@@ -28,13 +37,20 @@
                 <mat-radio-button value="1">Admin</mat-radio-button>
             </p>
         </mat-radio-group>
+        <Button mat-button>Add work experience</Button>
         <p></p>
-
+<div>
+    <label>Add a work experience</label>
+    <p>Employer: <input type="text" formControlName="employer"></p>
+    <p>Title: <input type="text" formControlName="title"></p>
+    <p>Start date: <input type="date" formControlName="startDate"></p>
+    <p>End date: <input type="date" formControlName="endDate"></p>
+</div>
         <Button mat-button [disabled]="!userForm.valid" type="submit">Submit</Button>
         <Button mat-button>Cancel</Button>
         <p>{{ response }} </p>
     </form>
-
+</div>
 
 
 </mat-card>
