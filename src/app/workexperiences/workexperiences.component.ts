@@ -1,6 +1,5 @@
-
-import { Component, Input, Output,OnInit, EventEmitter } from '@angular/core';
-import { FormArray, FormGroup,FormBuilder,Validators } from '@angular/forms';
+import {Component, Input, Output, EventEmitter} from '@angular/core';
+import {FormArray, FormGroup} from '@angular/forms';
 
 
 @Component({
@@ -15,10 +14,6 @@ export class WorkexperiencesComponent {
   @Input() userFormgroup: FormGroup = new FormGroup({});
   @Output() addWorkExperienceCallback = new EventEmitter();
 
-ngOnInit (){
-  
-}
-
   get workExperiences() {
     return this.userFormgroup.controls['workExperienceFormArray'] as FormArray;
   }
@@ -26,6 +21,4 @@ ngOnInit (){
   addWorkExperience() {
     this.addWorkExperienceCallback.emit('hello');
   }
-
-  
 }

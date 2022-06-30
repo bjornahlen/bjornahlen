@@ -1,10 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
-import { UseradminService } from '../useradmin.service';
-import { Router } from '@angular/router';
-import { FormArray } from '@angular/forms';
-import { WorkexperiencesComponent } from '../workexperiences/workexperiences.component';
-
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, Validators} from '@angular/forms';
+import {UseradminService} from '../useradmin.service';
+import {Router} from '@angular/router';
+import {FormArray} from '@angular/forms';
 
 
 @Component({
@@ -21,7 +19,8 @@ export class UserformComponent implements OnInit {
   response: string = '';
   submitted = false;
 
-  constructor(private fb: FormBuilder, private userAdminservice: UseradminService, private router: Router) { }
+  constructor(private fb: FormBuilder, private userAdminservice: UseradminService, private router: Router) {
+  }
 
 
   userForm = this.fb.group({
@@ -68,7 +67,6 @@ export class UserformComponent implements OnInit {
   }
 
 
-
   public handleError = (controlName: string, errorName: string) => {
     return this.userForm.controls[controlName].hasError(errorName);
   };
@@ -80,9 +78,6 @@ export class UserformComponent implements OnInit {
   get workExperiences() {
     return this.userForm.controls['workExperienceFormArray'] as FormArray;
   }
-
-
-
 
 
 }

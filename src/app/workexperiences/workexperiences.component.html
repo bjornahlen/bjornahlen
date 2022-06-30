@@ -1,13 +1,12 @@
 <mat-card [formGroup]="userFormgroup">
-    <div formArrayName="workExperienceFormArray">
-        <table>
-            <tr *ngFor="let workExperience of workExperiences.controls">
-                <td><input type="text" formControlName="employer"/></td>
-            </tr>
-        </table>
-
-        <div>
-            <button type="button" (click)="addWorkExperience()">Add work experience</button>
-        </div>
-    </div>
+  <div formArrayName="workExperienceFormArray">
+    <table>
+      <tr *ngFor="let workExperience of workExperiences.controls; let index = index" [formGroupName]="index">
+        <td><input type="text" formControlName="employer"/></td>
+      </tr>
+    </table>
+  </div>
+  <div>
+    <button type="button" (click)="addWorkExperience()">Add work experience</button>
+  </div>
 </mat-card>
