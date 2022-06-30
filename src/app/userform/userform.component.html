@@ -1,63 +1,60 @@
-<mat-card>
+<mat-card *ngIf="userForm">
     <mat-card-title>Create new user</mat-card-title>
     <mat-card-subtitle>Please fill in required information</mat-card-subtitle>
 
-<div [hidden]=!submitted>
-    <p>Your user was sucessfully saved. What do you want to do?</p>
-    <mat-card-actions>
-        <button mat-button [routerLink]="'/userform'">CREATE ANOTHER USER</button>
-        <button mat-button [routerLink]="'/user'">VEW EXISTING USERS</button>
-    </mat-card-actions>
-</div>
+    <div [hidden]=!submitted>
+        <p>Your user was sucessfully saved. What do you want to do?</p>
+        <mat-card-actions>
+            <button mat-button [routerLink]="'/userform'">CREATE ANOTHER USER</button>
+            <button mat-button [routerLink]="'/user'">VEW EXISTING USERS</button>
+        </mat-card-actions>
+    </div>
 
-<div [hidden]=submitted>
-    <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
-        <p>First name: <input type="text" formControlName="firstName"></p>
-        <div *ngIf="userForm.get('firstName')?.hasError('required')">Error firstname</div>
+    <div [hidden]=submitted>
+        <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+            <p>First name: <input type="text" formControlName="firstName"></p>
+            <div *ngIf="userForm.get('firstName')?.hasError('required')">Error firstname</div>
 
-        <p>Last name: <input type="text" formControlName="lastName"></p>
-        <p>Date of birth: <input type="date" formControlName="dateOfBirth"></p>
-        <p>User is married:<input type="checkbox" formControlName="isMarried"></p> 
-        <p></p>
-        <p><label>Gender:</label></p>
-        <mat-radio-group formControlName="gender">
-            <mat-radio-button value="0">Male</mat-radio-button>
+            <p>Last name: <input type="text" formControlName="lastName"></p>
+            <p>Date of birth: <input type="date" formControlName="dateOfBirth"></p>
+            <p>User is married:<input type="checkbox" formControlName="isMarried"></p>
             <p></p>
-            <mat-radio-button value="1">Female</mat-radio-button>
+            <p><label>Gender:</label></p>
+            <mat-radio-group formControlName="gender">
+                <mat-radio-button value="0">Male</mat-radio-button>
+                <p></p>
+                <mat-radio-button value="1">Female</mat-radio-button>
+                <p></p>
+                <mat-radio-button value="2"> Other</mat-radio-button>
+            </mat-radio-group>
             <p></p>
-            <mat-radio-button value="2"> Other</mat-radio-button>
-        </mat-radio-group>
-        <p></p>
-        <label>Option</label>
-        <mat-radio-group formControlName="role"><p></p>
-            <p>
-                <mat-radio-button value="0">User</mat-radio-button>
-            </p>
-            <p>
-                <mat-radio-button value="1">Admin</mat-radio-button>
-            </p>
-        </mat-radio-group>
-        <mat-card>
-<mat-card-title="Work experiences"></mat-card-title>
+            <label>Option</label>
+            <mat-radio-group formControlName="role">
+                <p></p>
+                <p>
+                    <mat-radio-button value="0">User</mat-radio-button>
+                </p>
+                <p>
+                    <mat-radio-button value="1">Admin</mat-radio-button>
+                </p>
+            </mat-radio-group>
+            <mat-card>
+                <mat-card-title>Work experiences</mat-card-title>
 
-        </mat-card>
-        <Button mat-button>Add work experience</Button>
-        <p></p>
-<div>
-    <app-workexperiences>[workExperiences]=workexperiences</app-workexperiences>
-</div>
-        <div>
-    <label>Add a work experience</label>
-    <p>Employer: <input type="text" formControlName="employer"></p>
-    <p>Title: <input type="text" formControlName="title"></p>
-    <p>Start date: <input type="date" formControlName="startDate"></p>
-    <p>End date: <input type="date" formControlName="endDate"></p>
-</div>
-        <Button mat-button [disabled]="!userForm.valid" type="submit">Submit</Button>
-        <Button mat-button>Cancel</Button>
-        <p>{{ response }} </p>
-    </form>
-</div>
+            </mat-card>
+            <p></p>
+            <div>
+                <app-workexperiences 
+                [userFormgroup]="userForm"
+                (addWorkExperienceCallback)="addWorkExperience()"
+                ></app-workexperiences>
+            </div>
+            
+            <Button mat-button [disabled]="!userForm.valid" type="submit">Submit</Button>
+            <Button mat-button>Cancel</Button>
+            <p>{{ response }} </p>
+        </form>
+    </div>
 
 
 </mat-card>

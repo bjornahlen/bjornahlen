@@ -1,27 +1,13 @@
-<mat-card>
-<mat-card-title>Work experiences</mat-card-title>
-<mat-table [dataSource]=workExperiences>
+<mat-card [formGroup]="userFormgroup">
+    <div formArrayName="workExperienceFormArray">
+        <table>
+            <tr *ngFor="let workExperience of workExperiences.controls">
+                <td><input type="text" formControlName="employer"/></td>
+            </tr>
+        </table>
 
-    
-    <ng-container matColumnDef="employer">
-        <th mat-header-cell *matHeaderCellDef> Employer </th>
-        <td mat-cell *matCellDef="let workexperience"> {{workexperience.employer}} </td>
-    </ng-container>
-
-    <ng-container matColumnDef="title">
-        <th mat-header-cell *matHeaderCellDef> Title </th>
-        <td mat-cell *matCellDef="let workexperience"> {{workexperience.employer}} </td>
-    </ng-container>
-
-    <ng-container matColumnDef="startdate">
-        <th mat-header-cell *matHeaderCellDef> Start date </th>
-        <td mat-cell *matCellDef="let workexperience"> {{workexperience.startdate | date: 'medium'}} </td>
-    </ng-container>
-
-    <ng-container matColumnDef="enddate">
-        <th mat-header-cell *matHeaderCellDef> End date </th>
-        <td mat-cell *matCellDef="let workexperience"> {{workexperience.enddate | date: 'medium'}} </td>
-    </ng-container>
-</mat-table>
-
+        <div>
+            <button type="button" (click)="addWorkExperience()">Add work experience</button>
+        </div>
+    </div>
 </mat-card>

@@ -1,23 +1,31 @@
 
-import { Component, OnInit, Input } from '@angular/core';
-import { Workexperiences } from '../workexperience';
-import { Observable } from 'rxjs';
-import { FormArray } from '@angular/forms';
+import { Component, Input, Output,OnInit, EventEmitter } from '@angular/core';
+import { FormArray, FormGroup,FormBuilder,Validators } from '@angular/forms';
+
 
 @Component({
   selector: 'app-workexperiences',
   templateUrl: './workexperiences.component.html',
   styleUrls: ['./workexperiences.component.scss']
 })
-export class WorkexperiencesComponent implements OnInit {
+export class WorkexperiencesComponent {
 
-  @Input() workExperiences: FormGroup;
+  displayedColumns = ['employer', 'title', 'startdate', 'endddate'];
 
+  @Input() userFormgroup: FormGroup = new FormGroup({});
+  @Output() addWorkExperienceCallback = new EventEmitter();
 
-  constructor() { }
+ngOnInit (){
+  
+}
 
-  ngOnInit(): void {
-
+  get workExperiences() {
+    return this.userFormgroup.controls['workExperienceFormArray'] as FormArray;
   }
 
+  addWorkExperience() {
+    this.addWorkExperienceCallback.emit('hello');
+  }
+
+  
 }

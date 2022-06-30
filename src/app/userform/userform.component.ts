@@ -32,30 +32,10 @@ export class UserformComponent implements OnInit {
     isMarried: ['true', Validators.required],
     role: ['', Validators.required],
     education: this.fb.array([]),
-    workExperiences: this.fb.array([]),
+    workExperienceFormArray: this.fb.array([]),
   })
 
-  createWorkExperience() {
-    return this.fb.group({
-      employer: ['', Validators.required],
-      title: ['', Validators.required],
-      startDate: ['', Validators.required],
-      endDate: ['', Validators.required],
-    })
-  }
 
-  addWorkExperience() {
-    
-  }
-
-
-
-  /*
-  addWorkexperience() {
-  this.workExperience.push(experienceForm);
-  
-  }
-  */
   ngOnInit(): void {
     console.log(this.submitted);
   }
@@ -70,11 +50,24 @@ export class UserformComponent implements OnInit {
       },
     });
 
-    console.log(this.userForm.value);
-
     this.submitted = true;
 
   }
+
+  createWorkExperience() {
+    return this.fb.group({
+      employer: ['', Validators.required],
+      title: ['', Validators.required],
+      startDate: ['', Validators.required],
+      endDate: ['', Validators.required],
+    })
+  }
+
+  addWorkExperience(): void {
+    this.workExperiences.push(this.createWorkExperience());
+  }
+
+
 
   public handleError = (controlName: string, errorName: string) => {
     return this.userForm.controls[controlName].hasError(errorName);
@@ -84,6 +77,9 @@ export class UserformComponent implements OnInit {
     this.userForm.reset();
   }
 
+  get workExperiences() {
+    return this.userForm.controls['workExperienceFormArray'] as FormArray;
+  }
 
 
 
