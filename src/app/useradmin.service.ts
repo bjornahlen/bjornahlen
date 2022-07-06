@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Observable, catchError, throwError, map } from 'rxjs';
+import { Observable, catchError, throwError } from 'rxjs';
 import { User } from './user';
 
 
@@ -11,6 +11,8 @@ import { User } from './user';
 export class UseradminService {
 
   private userUrl = 'https://afcrud.herokuapp.com/users/';
+  public id = '';
+  public errorMessage = '';
 
   constructor(private http: HttpClient) { }
 
@@ -26,6 +28,21 @@ export class UseradminService {
   deleteUser(id: string): Observable<Object>{
   return this.http.delete(this.userUrl + id)
   }
+/*
+  editUser(id: string, user: User){
+    return this.http.put<User>(this.userUrl + id, user)
+    .subscribe({
+      next: data => {
+          this.id = data.id;
+      },
+      error: error => {
+          this.errorMessage = error.message;
+          console.error('There was an error!', error);
+      }
+  });
+}
+  */  
+  
   
 private handleError(error: HttpErrorResponse) {
     if (error.status === 0) {
@@ -37,9 +54,9 @@ private handleError(error: HttpErrorResponse) {
     return throwError(() => new Error('Something bad happened; please try again later.'));
   }
 
+
+
+
+
+
 }
-
-
-
-
-

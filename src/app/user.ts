@@ -2,7 +2,7 @@ import { Workexperiences } from "./workexperience";
 import { Education } from "./education";
 
 export interface User {
-    
+_id: string;    
 firstName: string;
 lastName: string;
 dateOfBirth: Date;

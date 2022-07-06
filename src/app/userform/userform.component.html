@@ -16,7 +16,9 @@
             <div *ngIf="userForm.get('firstName')?.hasError('required')">Error firstname</div>
 
             <p>Last name: <input type="text" formControlName="lastName"></p>
+            <div *ngIf="userForm.get('lastName')?.hasError('required')" class="errorMessage">Error lastname</div>
             <p>Date of birth: <input type="date" formControlName="dateOfBirth"></p>
+            <div *ngIf="userForm.get('dateOfBirth')?.hasError('required')">Error date of birth</div>
             <p>User is married:<input type="checkbox" formControlName="isMarried"></p>
             <p></p>
             <p><label>Gender:</label></p>

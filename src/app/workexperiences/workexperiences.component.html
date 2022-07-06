@@ -2,11 +2,15 @@
   <div formArrayName="workExperienceFormArray">
     <table>
       <tr *ngFor="let workExperience of workExperiences.controls; let index = index" [formGroupName]="index">
-        <td><input type="text" formControlName="employer"/></td>
+        <td>Employer:<input type="text" formControlName="employer"/></td>
+        <td>Title:<input type="text" formControlName="title"/></td>
+        <td>Start date:<input type="date" formControlName="startDate"/></td>
+        <td>End date<input type="date" formControlName="endDate"/></td>
+        <td *ngIf="workExperiences.valid"><mat-icon>done_outline</mat-icon></td>
       </tr>
     </table>
   </div>
   <div>
-    <button type="button" (click)="addWorkExperience()">Add work experience</button>
+    <button type="button" [disabled]="!workExperiences.valid" (click)="addWorkExperience()">Add another work experience</button>
   </div>
 </mat-card>

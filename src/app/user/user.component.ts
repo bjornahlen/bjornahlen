@@ -17,7 +17,7 @@ export class UserComponent implements OnInit {
   destroy$: Subject<boolean> = new Subject<boolean>()
   user$: Observable<User[]> = this.userAdminservice.getUsers();
  
-  displayedColumns = ['firstName', 'lastName', 'dateOfBirth', 'gender', 'isMarried', 'role', 'actions'];
+  displayedColumns = ['id','firstName', 'lastName', 'dateOfBirth', 'gender', 'isMarried', 'role', 'actions','edit'];
 
 
   ngOnInit(): void {
@@ -31,8 +31,11 @@ export class UserComponent implements OnInit {
   deleteUser(id: string) {
     -    this.userAdminservice.deleteUser(id).subscribe();
        }
-
-
+/*
+       editUser(id: string) {
+        -    this.userAdminservice.editUser(id);
+           }
+*/
 
 }
 

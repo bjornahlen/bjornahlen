@@ -19,6 +19,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule, MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { MatRadioModule } from '@angular/material/radio';
 import { WorkexperiencesComponent } from './workexperiences/workexperiences.component';
+import { EditUserComponent } from './edit-user/edit-user.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { WorkexperiencesComponent } from './workexperiences/workexperiences.comp
     AboutComponent,
     UserComponent,
     UserformComponent,
-    WorkexperiencesComponent
+    WorkexperiencesComponent,
+    EditUserComponent
   ],
   imports: [
     BrowserModule,

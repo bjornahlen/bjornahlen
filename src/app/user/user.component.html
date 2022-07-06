@@ -5,6 +5,11 @@
     <div *ngIf="user$ | async as users; else noData">
         <mat-table [dataSource]="users">
 
+            <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef> Id </th>
+                <td mat-cell class="id-cell" *matCellDef="let user"> {{user._id}} </td>
+            </ng-container>
+
             <ng-container matColumnDef="firstName">
                 <th mat-header-cell *matHeaderCellDef> First Name </th>
                 <td mat-cell class="firstname-cell" *matCellDef="let user"> {{user.firstName}} </td>
@@ -36,9 +41,14 @@
             </ng-container>
 
             <ng-container matColumnDef="actions">
-                <th mat-header-cell *matHeaderCellDef>Action</th>
-                <td mat-cell *matCellDef="let user"> <button mat-icon-button (click)="deleteUser(user._id)">
-                    <mat-icon mat-icon-button color="warn">clear</mat-icon>
+            <th mat-header-cell *matHeaderCellDef>Action</th>
+            <td mat-cell *matCellDef="let user"> <button mat-icon-button (click)="deleteUser(user._id)">
+            <mat-icon mat-icon-button color="warn">clear</mat-icon></button></td>
+            </ng-container>
+
+            <ng-container matColumnDef="edit">        
+            <th mat-header-cell *matHeaderCellDef>Action 2</th>
+            <td mat-cell *matCellDef="let user"><button mat-icon-button [routerLink]="'/edituser'"><mat-icon color="warn">edit</mat-icon>
                   </button></td>
             </ng-container>
 

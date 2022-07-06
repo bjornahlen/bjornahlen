@@ -1,0 +1,10 @@
+<mat-card>
+    <mat-card-title>Edit user</mat-card-title>
+<div *ngIf="user" else noUser>
+    <p>{{ user.firstName }}</p>
+</div>
+
+<div #noUser>
+    <p>No user was found</p>
+</div>
+</mat-card>

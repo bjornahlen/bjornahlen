@@ -1,8 +1,10 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {FormBuilder, Validators} from '@angular/forms';
 import {UseradminService} from '../useradmin.service';
 import {Router} from '@angular/router';
 import {FormArray} from '@angular/forms';
+import { User } from '../user';
+import { Workexperiences } from '../workexperience';
 
 
 @Component({
@@ -14,10 +16,14 @@ import {FormArray} from '@angular/forms';
 
 export class UserformComponent implements OnInit {
 
+  @Input() user?: User = ({} as User);
+  @Input() editMode? = false;
+
   workexperienceactive: boolean = false;
   educationactive: boolean = false;
   response: string = '';
   submitted = false;
+
 
   constructor(private fb: FormBuilder, private userAdminservice: UseradminService, private router: Router) {
   }
@@ -53,7 +59,7 @@ export class UserformComponent implements OnInit {
 
   }
 
-  createWorkExperience() {
+  createWorkExperience(workExperience? : Workexperiences) {
     return this.fb.group({
       employer: ['', Validators.required],
       title: ['', Validators.required],
